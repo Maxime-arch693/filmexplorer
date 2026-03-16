@@ -13,3 +13,10 @@ urlpatterns = [
     path('film/<slug:slug>/', views.film_detail, name='film_detail'),
     path('profile/', views.profile, name='profile'),
 ]
+
+from django.contrib.auth.models import User
+try:
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@example.com', 'Admin123!')
+except:
+    pass
