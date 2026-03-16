@@ -124,4 +124,3 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = 'profile'  
 LOGOUT_REDIRECT_URL = 'home'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'films/static')]
