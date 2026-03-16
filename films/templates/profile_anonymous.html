@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Bienvenue visiteur !</h2>
+  <p>Pour accéder à toutes les fonctionnalités et marquer les films que vous avez vus, veuillez vous identifier.</p>
+  <br>
+  <a href="{% url 'login' %}" class="btn">Se connecter</a>
+  <a href="{% url 'signup' %}" class="btn" style="background-color: #95a5a6;">Créer un compte</a>
+{% endblock %}

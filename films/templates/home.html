@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil - Film Explorer{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm text-center">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold text-dark">Bienvenue sur Film Explorer</h1>
+        <p class="col-md-8 mx-auto fs-4 text-muted mt-3">
+            La plateforme ultime pour découvrir, chercher et noter vos films préférés. 
+            Connectez-vous pour commencer votre collection !
+        </p>
+        <br>
+        <a href="{% url 'film_list' %}" class="btn btn-primary btn-lg px-4 gap-3">Parcourir le catalogue</a>
+    </div>
+</div>
+{% endblock %}

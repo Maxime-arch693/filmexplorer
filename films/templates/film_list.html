@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block extra_head %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+{% endblock %}
+{% block content %}
+    <h2>Catalogue des films</h2>
+
+    <form action="{% url 'film_list' %}" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Rechercher un film..." value="{{ query|default:'' }}" style="padding: 8px; width: 300px;">
+        <button type="submit" class="btn btn-primary">Chercher</button>
+    </form>
+
+    <table id='filmTable' class='display'>
+        <thead><tr><th>Titre</th><th>Année</th></tr></thead>
+        <tbody>
+            {% for film in films %}
+            <tr>
+                <td><a href="{% url 'film_detail' slug=film.slug %}">{{ film.title }}</a></td>
+                <td>{{ film.release_year }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>$(document).ready(function () { $('#filmTable').DataTable(); });</script>
+{% endblock %}

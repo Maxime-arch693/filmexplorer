@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Détails de {{ film.title }}{% endblock %}
+
+{% block content %}
+  <h1>{{ film.title }}</h1>
+  <p><strong>Année de sortie :</strong> {{ film.release_year }}</p>
+  <hr>
+  
+  <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 20px;">
+      {% if has_viewed %}
+        <h3 style="color: #27ae60;">✓ Vous avez vu ce film.</h3>
+        <form method="post">{% csrf_token %}
+          <button type="submit" name="toggle_viewed" class="btn btn-danger">Marquer comme NON vu</button>
+        </form>
+      {% else %}
+        <h3 style="color: #7f8c8d;">✗ Vous n'avez pas encore vu ce film.</h3>
+        <form method="post">{% csrf_token %}
+          <button type="submit" name="toggle_viewed" class="btn">Marquer comme Vu</button>
+        </form>
+      {% endif %}
+  </div>
+  <hr>
+  
+  <h3>Avis et Commentaires</h3>
+  <ul>
+      {% for review in reviews %}
+          <li>
+              <strong>{{ review.user.username }}</strong> ({{ review.rating }}/5) : <br>
+              {{ review.comment }}
+          </li>
+      {% empty %}
+          <li>Aucun avis pour le moment. Soyez le premier !</li>
+      {% endfor %}
+  </ul>
+
+  {% if user.is_authenticated %}
+      <h4>Ajouter un avis</h4>
+      <form method="post">
+          {% csrf_token %}
+          {{ review_form.as_p }}
+          <button type="submit" class="btn btn-primary">Envoyer l'avis</button>
+      </form>
+  {% endif %}
+  
+  <br><br>
+  <a href="{% url 'film_list' %}" style="padding: 10px; background-color: #eee; text-decoration: none; border-radius: 5px; color: black; display: inline-block;">
+      ⬅ Retour à la liste
+  </a>
+{% endblock %}

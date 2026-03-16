@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Bonjour {{ user.username }} ! 👋</h2>
+  <p>Bienvenue sur votre tableau de bord personnel.</p>
+  <hr>
+
+  <h3>🎬 Mes films vus :</h3>
+  <ul>
+    {% for film in user.film2_set.all %}
+      <li><a href="{% url 'film_detail' slug=film.slug %}">{{ film.title }}</a></li>
+    {% empty %}
+      <p style="color: #7f8c8d;">Vous n'avez pas encore vu de film. Allez dans "Parcourir" pour en ajouter !</p>
+    {% endfor %}
+  </ul>
+
+  <br><br>
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Se déconnecter</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,119 @@
+:root {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --bg-body: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --nav-bg: #1e293b;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Navbar Moderne */
+header {
+    background: var(--nav-bg);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Conteneur Principal */
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Style de la Table DataTables */
+.dataTables_wrapper {
+    padding: 20px 0;
+}
+
+table.dataTable {
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
+}
+
+table.dataTable thead th {
+    background: #f1f5f9;
+    border-bottom: none !important;
+    padding: 15px !important;
+    border-radius: 8px;
+    color: var(--text-muted);
+}
+
+table.dataTable tbody tr {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+table.dataTable tbody tr:hover {
+    transform: scale(1.01);
+    background-color: #f8faff !important;
+}
+
+table.dataTable tbody td {
+    padding: 15px !important;
+    border-top: 1px solid #f1f5f9 !important;
+}
+
+/* Boutons Stylisés */
+.btn, button {
+    background: var(--primary);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s shadow;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.btn-danger {
+    background: #ef4444;
+}
+
+/* Détails du film */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
